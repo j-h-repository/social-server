@@ -21,12 +21,7 @@ mongoose.connect(process.env.DATABASE,{})
     //apply some middlewares with .use();
 		app.use(express.json({limit:"5mb"}));
 		app.use(express.urlencoded({extended:true}));
-		app.use(cors({
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
-}))
+		app.use(cors())
 
     //post request for registering the user
     readdirSync(`./routes`).map((r)=>app.use(`/api`, require(`./routes/${r}`)))
