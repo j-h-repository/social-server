@@ -22,11 +22,10 @@ mongoose.connect(process.env.DATABASE,{})
 		app.use(express.json({limit:"5mb"}));
 		app.use(express.urlencoded({extended:true}));
 		app.use(cors({
-           		origin: [process.env.CLIENT_URL],
-			methods: ["GET", "POST"],
-    			allowedHeaders: ["Content-type"],
-    			credentials: true,
-    			optionsSuccessStatus: 200
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
 }))
 
     //post request for registering the user
